@@ -3,3 +3,4 @@
 ft_ls
 *.o
 tmp.c
+_OUT

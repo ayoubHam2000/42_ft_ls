@@ -12,6 +12,7 @@ Main = \
 	linked_list_c/l_get.c \
 	linked_list_c/l_init.c \
 	utils/ft_strdup.c \
+	utils/print_utils/ft_put_str.c \
 	main.c
 
 
@@ -39,7 +40,8 @@ deps = $(OBJ:.o=.d)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	gcc $(OBJ) -o $(NAME)
+	gcc $(OBJ) -o $(NAME) 
+#-fsanitize=address
 
 $(OBJ) : $(OBJ_DIR)%.o : %.c
 	mkdir -p $(dir $@)

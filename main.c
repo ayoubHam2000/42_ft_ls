@@ -19,7 +19,7 @@ void list_sort_time(t_list *list) {
             t_content *data1 = (t_content *)ptr->p;
             t_content *data2 = (t_content *)ptr->next->p;
 
-            if (data1->m_time > data2->m_time) {
+            if (data1->m_time < data2->m_time) {
                 void *temp = ptr->p;
                 ptr->p = ptr->next->p;
                 ptr->next->p = temp;
@@ -95,7 +95,7 @@ t_list  *list_directory(char *path, t_config *config)
     }
 
     char *file_path = pathJoin(path, de->d_name);
-    if (stat(file_path, &file_stat) == -1) {
+    if (lstat(file_path, &file_stat) == -1) {
       printf("%s ->\n", file_path);
       perror("stat: ");
       continue;
@@ -128,6 +128,7 @@ t_list  *list_directory(char *path, t_config *config)
     content->m_time = file_stat.st_mtime;
     content->st_mode = file_stat.st_mode;
     res->nb_blocks += file_stat.st_blocks;
+
 
     if (l_append_end(res, content) == 0)
       exit(1);
@@ -239,10 +240,13 @@ void	recursive_listing(const char *path, t_config *config){
       {
         if (config->show_hidden != 0 || entry->d_name[0] != '.')
         {
-          printf("%s:\n", filePath);
           t_list *list_dir = list_directory(filePath, config);
-          print_list(list_dir, config);
-          recursive_listing(filePath, config);
+          if (list_dir != NULL)
+          {
+            printf("%s:\n", filePath);
+            print_list(list_dir, config);
+            recursive_listing(filePath, config);
+          }
         }
       }
       entry = readdir(dir);
@@ -331,17 +335,29 @@ int main(int ac, char **av)
     //printf("%s\n", path);
     if (config.recursive == 1)
     {
+      printf("%s:\n", path);
+      t_list *list_dir = list_directory(path, &config);
+      if (list_dir != NULL)
+      {
+        print_list(list_dir, &config);
+      }
       recursive_listing(path, &config);
     } else if (paths->len > 1) {
       printf("%s:\n", path);
       t_list *list_dir = list_directory(path, &config);
-      print_list(list_dir, &config);
+      if (list_dir != NULL)
+      {
+        print_list(list_dir, &config);
+      }
     }
     else {
       t_list *list_dir = list_directory(path, &config);
-      if (config.list == 1)
-        printf("total: %ld\n", list_dir->nb_blocks);
-      print_list(list_dir, &config);
+      if (list_dir != NULL)
+      {
+        if (config.list == 1)
+          printf("total: %ld\n", list_dir->nb_blocks / 2);
+        print_list(list_dir, &config);
+      }
     }
     node = node->next;
   }

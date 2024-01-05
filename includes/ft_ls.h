@@ -7,11 +7,14 @@
 #include <unistd.h>
 #include <pwd.h>
 #include <dirent.h>
+#include <sys/types.h>
 
 #include <grp.h>
 #include <time.h>
 #include <errno.h>
 #include <sys/time.h>
+
+void  ft_put_str(int fd, const char *str);
 
 typedef struct s_config
 {

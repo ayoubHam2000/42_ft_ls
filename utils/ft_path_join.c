@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   l_append_front.c                                   :+:      :+:    :+:   */
+/*   ft_path_join.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 19:08:58 by aben-ham          #+#    #+#             */
-/*   Updated: 2022/02/14 14:27:29 by aben-ham         ###   ########.fr       */
+/*   Created: 2024/09/03 21:33:46 by aben-ham          #+#    #+#             */
+/*   Updated: 2024/09/03 21:37:06 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include <unistd.h>
+#include <utils.h>
 
-int	l_append_front(t_list *list, void *p)
+char	*ft_path_join(const char *s1, const char *s2)
 {
-	t_node	*new;
+	size_t	len_1;
+	size_t	len_2;
+	char	*res;
+	int		i;
 
-	new = l_create_node(p);
-	if (!new)
-		return (0);
-	if (!list->head)
+	i = 0;
+	len_1 = ft_strlen(s1);
+	len_2 = ft_strlen(s2);
+	res = ft_malloc(len_1 + len_2 + 2);
+	while (*s1 != 0)
 	{
-		list->head = new;
-		list->last = new;
+		res[i++] = *s1;
+		s1++;
 	}
-	else
+	res[i++] = '/';
+	while (*s2 != 0)
 	{
-		new->next = list->head;
-		list->head = new;
+		res[i++] = *s2;
+		s2++;
 	}
-	list->len++;
-	return (1);
+	res[i] = 0;
+	return (res);
 }

@@ -1,25 +1,28 @@
 Main = \
-	linked_list_c/l_append_after.c \
+	ft_ls/ft_ls.c \
+	ft_ls/list_directories.c \
+	ft_ls/list_reverse.c \
+	ft_ls/list_sort_name.c \
+	ft_ls/list_sort_time.c \
+	ft_ls/print_list.c \
+	ft_ls/recursive_listing.c \
+	ft_ls/set_config.c \
 	linked_list_c/l_append_end.c \
-	linked_list_c/l_append_front.c \
-	linked_list_c/l_append_index.c \
-	linked_list_c/l_clone.c \
-	linked_list_c/l_create_node.c \
 	linked_list_c/l_clear.c \
-	linked_list_c/l_del_by_index.c \
-	linked_list_c/l_del_by_prev.c \
-	linked_list_c/l_del_cond.c \
-	linked_list_c/l_get.c \
+	linked_list_c/l_create_node.c \
 	linked_list_c/l_init.c \
+	utils/ft_malloc.c \
+	utils/ft_put_nbr.c \
+	utils/ft_put_str.c \
 	utils/ft_strdup.c \
-	utils/print_utils/ft_put_str.c \
+	utils/ft_strlen.c \
+	utils/ft_strncmp.c \
+	utils/str_join.c \
+	utils/ft_path_join.c \
 	main.c
-
 
 FILES = \
 	$(Main)
-
-
 
 #-Wall -Wextra -Werror -g
 # -fsanitize=address

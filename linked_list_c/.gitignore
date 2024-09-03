@@ -1,8 +1,0 @@
-.vscode
-**/*.out
-**/*.exe
-**/*.txt
-**/*.DS_store
-**/*.a
-OUT
-linked_list

@@ -1,44 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/03 21:34:54 by aben-ham          #+#    #+#             */
+/*   Updated: 2024/09/03 21:37:45 by aben-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != 0)
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-
-	i = 0;
-	while (*src != 0 && dstsize > 1)
-	{
-		*dst = *src;
-		src++;
-		dst++;
-		i++;
-		dstsize--;
-	}
-	while (*src++ != 0)
-		i++;
-	if (dstsize)
-		*dst = 0;
-	return (i);
-}
+#include <utils.h>
 
 char	*ft_strdup(const char *s1)
 {
-	char	*s2;
-	size_t	s1_len;
+	char		*res;
+	int			i;
 
-	s1_len = ft_strlen((char *)s1);
-	s2 = malloc(s1_len + 1);
-	if (!s2)
-		return (NULL);
-	ft_strlcpy(s2, s1, s1_len + 1);
-	return (s2);
+	res = ft_malloc(ft_strlen(s1) + 1);
+	i = 0;
+	while (*s1 != 0)
+	{
+		res[i] = *s1;
+		s1++;
+		i++;
+	}
+	res[i] = 0;
+	return (res);
 }

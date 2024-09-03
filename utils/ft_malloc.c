@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   l_init.c                                           :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 19:08:20 by aben-ham          #+#    #+#             */
-/*   Updated: 2022/02/14 11:21:14 by aben-ham         ###   ########.fr       */
+/*   Created: 2024/09/03 21:33:39 by aben-ham          #+#    #+#             */
+/*   Updated: 2024/09/03 21:36:29 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-void	*l_init(void)
+void	*ft_malloc(size_t size)
 {
-	t_list	*new_list;
+	void	*p;
 
-	new_list = malloc(sizeof(t_list));
-	if (!new_list)
-		exit(1);
-	new_list->head = NULL;
-	new_list->last = NULL;
-	new_list->len = 0;
-	new_list->nb_blocks = 0;
-	return (new_list);
+	p = malloc(size);
+	if (p == NULL)
+	{
+		exit(2);
+	}
+	return (p);
 }

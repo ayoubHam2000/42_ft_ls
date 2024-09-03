@@ -18,7 +18,7 @@ t_node	*l_create_node(void *p)
 
 	new = malloc(sizeof(t_node));
 	if (!new)
-		return (NULL);
+		exit(2);
 	new->p = p;
 	new->next = NULL;
 	return (new);

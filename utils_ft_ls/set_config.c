@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:09 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 13:36:25 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:41:07 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	set_directories(int ac, char **av, t_list *paths)
 	int	f;
 
 	i = 1;
+	f = 0;
 	while (i < ac)
 	{
 		if (av[i][0] != '-')

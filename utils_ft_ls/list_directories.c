@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:45:54 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 10:35:31 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:59:38 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ static void	get_info(t_info *info, const char *file_name, \
 	const char *file_path, t_config *config)
 {
 	info->res = 1;
+	if (config->show_hidden == 0 && file_name[0] == '.')
+		return ;
 	if (lstat(file_path, &(info->file_stat)) == -1)
 	{
-		perror("lstat");
+		ft_put_str(2, "Could not stat: ");
+		ft_put_str(2, file_path);
+		ft_put_str(2, "\n");
 		return ;
 	}
 	info->pw = getpwuid(info->file_stat.st_uid);
@@ -34,8 +38,6 @@ static void	get_info(t_info *info, const char *file_name, \
 		perror("grgid");
 		return ;
 	}
-	if (config->show_hidden == 0 && file_name[0] == '.')
-		return ;
 	info->res = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:39:28 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 10:48:50 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:08:35 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	list_sort_name(t_list *list);
 void	list_reverse(t_list *list);
 char	set_permission(int val, char c);
 void	free_content(void *p);
+char	get_file_type(mode_t mode);
 
 #endif

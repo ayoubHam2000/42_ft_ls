@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:03 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 10:33:02 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:08:46 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@ static void	print_permissions(mode_t mode)
 {
 	char	permissions[12];
 
-	permissions[0] = set_permission(S_ISREG(mode), '-');
-	permissions[0] = set_permission(S_ISDIR(mode), 'd');
-	permissions[0] = set_permission(S_ISLNK(mode), 'l');
-	permissions[0] = set_permission(S_ISBLK(mode), 'b');
-	permissions[0] = set_permission(S_ISCHR(mode), 'c');
-	permissions[0] = set_permission(S_ISFIFO(mode), 'p');
-	permissions[0] = set_permission(S_ISSOCK(mode), 's');
+	permissions[0] = get_file_type(mode);
 	permissions[1] = set_permission((mode & S_IRUSR), 'r');
 	permissions[2] = set_permission((mode & S_IWUSR), 'w');
 	permissions[3] = set_permission((mode & S_IXUSR), 'x');

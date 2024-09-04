@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:06 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 10:45:33 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:14:19 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	print(const char *path, struct dirent *entry, t_config *config)
 	{
 		if (config->show_hidden != 0 || entry->d_name[0] != '.')
 		{
+			ft_put_str(1, "\n");
+			ft_put_str(1, file_path);
+			ft_put_str(1, ":\n");
 			list_dir = list_directory(file_path, config);
 			if (list_dir != NULL)
 			{
-				ft_put_str(1, "\n");
-				ft_put_str(1, file_path);
-				ft_put_str(1, ":\n");
 				print_list(list_dir, config);
 				l_clear(list_dir, free_content);
 				free(list_dir);

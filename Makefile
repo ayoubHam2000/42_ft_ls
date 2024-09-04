@@ -29,7 +29,7 @@ FILES = \
 #-Wall -Wextra -Werror -g
 # -fsanitize=address
 
-CFLAGS = -Wall -Wextra # -Werror
+CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I ./includes
 
 DEPFLAGS = -MMD -MF $(@:.o=.d)

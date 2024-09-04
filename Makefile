@@ -1,12 +1,13 @@
 Main = \
-	ft_ls/ft_ls.c \
-	ft_ls/list_directories.c \
-	ft_ls/list_reverse.c \
-	ft_ls/list_sort_name.c \
-	ft_ls/list_sort_time.c \
-	ft_ls/print_list.c \
-	ft_ls/recursive_listing.c \
-	ft_ls/set_config.c \
+	utils_ft_ls/free_content.c \
+	utils_ft_ls/ft_ls.c \
+	utils_ft_ls/list_directories.c \
+	utils_ft_ls/list_reverse.c \
+	utils_ft_ls/list_sort_name.c \
+	utils_ft_ls/list_sort_time.c \
+	utils_ft_ls/print_list.c \
+	utils_ft_ls/recursive_listing.c \
+	utils_ft_ls/set_config.c \
 	linked_list_c/l_append_end.c \
 	linked_list_c/l_clear.c \
 	linked_list_c/l_create_node.c \
@@ -19,6 +20,7 @@ Main = \
 	utils/ft_strncmp.c \
 	utils/str_join.c \
 	utils/ft_path_join.c \
+	utils/set_permission.c \
 	main.c
 
 FILES = \

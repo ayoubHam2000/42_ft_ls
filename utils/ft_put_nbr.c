@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:34:45 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/03 21:34:46 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:33:27 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,31 @@ void	ft_put_nbr(int fd, ssize_t n)
 		write (fd, "-", 1);
 	}
 	ft_putnbr_fd_rec(n, fd, sign);
+}
+
+void	ft_put_nbr_buffer(int fd, ssize_t n, size_t buf_size)
+{
+	size_t	sign;
+	size_t	nb_size;
+
+	sign = 1;
+	if (n < 0)
+	{
+		sign = -1;
+		write (fd, "-", 1);
+	}
+	ft_putnbr_fd_rec(n, fd, sign);
+	nb_size = 0;
+	if (n == 0)
+		nb_size = 1;
+	while (n)
+	{
+		nb_size++;
+		n /= 10;
+	}
+	while (nb_size < buf_size)
+	{
+		write(fd, " ", 1);
+		nb_size++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:02:12 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/03 21:49:03 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:00:00 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ struct s_list
 	long	len;
 	long	nb_blocks;
 };
-
-typedef struct s_info
-{
-	int				res;
-	struct passwd	*pw;
-	struct group	*gr;
-	struct stat		file_stat;
-}	t_info;
 
 void	*l_init(void);
 t_node	*l_create_node(void *p);

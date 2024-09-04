@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:39:28 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/03 21:41:50 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:48:50 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ typedef struct s_content
 	char	*linked_file;
 }	t_content;
 
+typedef struct s_info
+{
+	int				res;
+	struct passwd	*pw;
+	struct group	*gr;
+	struct stat		file_stat;
+}	t_info;
+
 void	ft_ls(t_list *paths, t_config *config);
 t_list	*list_directory(char *path, t_config *config);
 void	set_config(t_list *paths, t_config *config, int ac, char **av);
@@ -59,5 +67,7 @@ void	print_list(t_list *list, t_config *config);
 void	list_sort_time(t_list *list);
 void	list_sort_name(t_list *list);
 void	list_reverse(t_list *list);
+char	set_permission(int val, char c);
+void	free_content(void *p);
 
 #endif

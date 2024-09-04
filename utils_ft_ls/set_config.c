@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:09 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 10:49:15 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:36:25 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,25 @@ static void	add_folder(t_list *paths, char *arg)
 	closedir(dir);
 }
 
+static void	set_directories(int ac, char **av, t_list *paths)
+{
+	int	i;
+	int	f;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (av[i][0] != '-')
+		{
+			add_folder(paths, av[i]);
+			f = 1;
+		}
+		i++;
+	}
+	if (paths->len == 0 && f == 0)
+		l_append_end(paths, ft_strdup("."));
+}
+
 void	set_config(t_list *paths, t_config *config, int ac, char **av)
 {
 	int	i;
@@ -71,10 +90,7 @@ void	set_config(t_list *paths, t_config *config, int ac, char **av)
 	{
 		if (av[i][0] == '-')
 			set_option(config, av[i]);
-		else
-			add_folder(paths, av[i]);
 		i++;
 	}
-	if (paths->len == 0)
-		l_append_end(paths, ft_strdup("."));
+	set_directories(ac, av, paths);
 }

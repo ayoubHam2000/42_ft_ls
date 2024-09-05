@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:39:28 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 11:08:35 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:47:35 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_ls(t_list *paths, t_config *config);
 t_list	*list_directory(char *path, t_config *config);
 void	set_config(t_list *paths, t_config *config, int ac, char **av);
 void	recursive_listing(const char *path, t_config *config);
-void	print_list(t_list *list, t_config *config);
+void	print_list(t_list *list, t_config *config, int is_file);
 void	list_sort_time(t_list *list);
 void	list_sort_name(t_list *list);
 void	list_reverse(t_list *list);

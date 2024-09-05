@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:03 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 11:08:46 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:47:01 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ static void	print_node(t_node *node, t_config *config)
 	}
 }
 
-void	print_list(t_list *list, t_config *config)
+void	print_list(t_list *list, t_config *config, int is_file)
 {
 	t_node	*node;
 
-	if (config->list == 1)
+	if (config->list == 1 && is_file == 0)
 	{
 		ft_put_str(1, "total: ");
 		ft_put_nbr(1, list->nb_blocks / 2);

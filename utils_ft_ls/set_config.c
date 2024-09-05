@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:09 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 13:41:07 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:42:56 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ static void	set_option(t_config *config, char *arg)
 
 static void	add_folder(t_list *paths, char *arg)
 {
-	DIR	*dir;
+	//DIR	*dir;
 
-	dir = opendir(arg);
-	if (dir == NULL)
+	if (access(arg, F_OK) == 0)
 	{
-		ft_put_str(2, "ls: cannot open directory ");
+		l_append_end(paths, ft_strdup(arg));
+	}
+	else
+	{
+		ft_put_str(2, "ls: No such file or directory ");
 		ft_put_str(2, arg);
 		ft_put_str(2, "\n");
 	}
-	else
-		l_append_end(paths, ft_strdup(arg));
-	closedir(dir);
 }
 
 static void	set_directories(int ac, char **av, t_list *paths)

@@ -6,7 +6,7 @@
 /*   By: aben-ham <aben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:46:06 by aben-ham          #+#    #+#             */
-/*   Updated: 2024/09/04 11:14:19 by aben-ham         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:47:51 by aben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	print(const char *path, struct dirent *entry, t_config *config)
 			list_dir = list_directory(file_path, config);
 			if (list_dir != NULL)
 			{
-				print_list(list_dir, config);
+				print_list(list_dir, config, 1);
 				l_clear(list_dir, free_content);
 				free(list_dir);
 				recursive_listing(file_path, config);
